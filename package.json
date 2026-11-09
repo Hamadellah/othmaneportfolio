@@ -1,0 +1,26 @@
+{
+  "name": "my-3d-portfolio",
+  "private": true,
+  "version": "1.1.0",
+  "type": "module",
+  "description": "Othmane Hamadellah \u2014 interactive 3D particle portrait portfolio",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "reconstruct": "python3 tools/reconstruct.py",
+    "assets": "python3 tools/make_assets.py",
+    "thumbs": "node tools/make_project_thumbs.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.2.1",
+    "vite": "^8.3.6"
+  }
+}

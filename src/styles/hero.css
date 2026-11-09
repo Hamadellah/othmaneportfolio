@@ -1,0 +1,136 @@
+/* ===== Hero: desktop = copy | head ; phones = head, then copy ===== */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 88px 2rem 4rem;
+}
+.hero__inner {
+  position: relative; z-index: 2;
+  width: 100%; max-width: 1240px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+}
+
+/* ---- copy ---- */
+.hero__copy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.hero__item { transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); transition-delay: calc(var(--i, 0) * 90ms + 120ms); }
+.hero[data-entered="false"] .hero__item { opacity: 0; transform: translateY(22px); }
+
+.hero__badge {
+  display: inline-flex; align-items: center; gap: 8px; margin: 0 0 1.4rem;
+  background: rgba(0, 245, 255, 0.08); border: 1px solid rgba(0, 245, 255, 0.2);
+  border-radius: 20px; padding: 6px 14px; color: #00f5ff; font-size: 12px;
+}
+.hero__dot { width: 7px; height: 7px; border-radius: 50%; background: #00ff88; animation: pulse 2s infinite; }
+.hero__hi { margin: 0 0 0.25rem; color: rgba(255, 255, 255, 0.55); font-size: clamp(1rem, 2.2vw, 1.25rem); font-weight: 500; }
+.hero__name {
+  margin: 0 0 1rem; color: #fff; font-weight: 800; line-height: 1.04; letter-spacing: -0.02em;
+  font-size: clamp(2.3rem, 5.2vw, 4.4rem);
+}
+.hero__name-grad {
+  background: linear-gradient(110deg, #00f5ff, #b855ff 45%, #4f8ef7 70%, #00f5ff);
+  background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  animation: shine 9s linear infinite;
+}
+.hero__role { margin: 0 0 1.5rem; font-size: clamp(1.05rem, 2.2vw, 1.55rem); font-weight: 600; min-height: 1.6em; }
+.hero__role-lead { color: rgba(255, 255, 255, 0.5); }
+.hero__role-typed, .hero__caret { color: #00f5ff; }
+.hero__caret { animation: blink 1s infinite; }
+
+.hero__cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.4rem; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none;
+  font-family: inherit; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: linear-gradient(135deg, #00f5ff, #4f8ef7); color: #000; border: 0; font-weight: 700; }
+.btn--primary:hover { box-shadow: 0 8px 26px rgba(0, 245, 255, 0.28); }
+.btn--ghost { background: transparent; color: #00f5ff; border: 1px solid #00f5ff; }
+.btn--ghost:hover { background: rgba(0, 245, 255, 0.08); }
+.btn--soft { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); }
+.btn--soft:hover { background: rgba(255, 255, 255, 0.1); }
+
+.hero__social { list-style: none; margin: 0 0 1.8rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.hero__social a {
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px;
+  color: rgba(255, 255, 255, 0.75); text-decoration: none; font-size: 13px;
+  background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.hero__social a:hover { color: #00f5ff; border-color: rgba(0, 245, 255, 0.45); background: rgba(0, 245, 255, 0.08); }
+
+.hero__intro { margin: 0 0 2rem; max-width: 30rem; color: rgba(255, 255, 255, 0.62); line-height: 1.8; font-size: 15px; }
+.hero__stats { display: flex; gap: 2rem; margin: 0; }
+.hero__stats dt {
+  font-size: 26px; font-weight: 800; line-height: 1.2;
+  background: linear-gradient(135deg, #00f5ff, #b855ff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero__stats dd { margin: 0; font-size: 11px; color: rgba(255, 255, 255, 0.4); }
+
+/* ---- the head's stage ---- */
+.hero__stage { position: relative; height: min(80svh, 760px); min-height: 460px; }
+.hero__halo {
+  position: absolute; inset: 6% 4%; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(110, 90, 255, 0.16), rgba(0, 245, 255, 0.05) 55%, transparent 75%);
+  filter: blur(14px);
+  animation: halo 9s ease-in-out infinite;
+}
+.hero__hint {
+  position: absolute; left: 0; right: 0; bottom: 4px; margin: 0; text-align: center;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.28); pointer-events: none;
+}
+
+/* ---- static portrait (no WebGL / crawlers / before the 3D chunk) ---- */
+.portrait-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.portrait-fallback > * { grid-area: 1 / 1; }
+.portrait-fallback { --s: min(340px, 78%); }
+.portrait-fallback__ring { position: absolute; width: var(--s); aspect-ratio: 1; border-radius: 50%; background: linear-gradient(135deg, #00f5ff, #b855ff, #4f8ef7); animation: spin 8s linear infinite; padding: 3px; -webkit-mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); -webkit-mask-composite: xor; }
+.portrait-fallback__img { position: relative; width: calc(var(--s) - 8px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: #050510; }
+.portrait-fallback__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; display: block; opacity: 0.92; filter: grayscale(1) contrast(1.08) brightness(0.9); mix-blend-mode: screen; }
+
+@keyframes shine { to { background-position: 220% 0; } }
+@keyframes halo { 0%, 100% { opacity: 0.75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
+
+/* ===== Tablet ===== */
+@media (max-width: 960px) {
+  .hero { padding-inline: 1.5rem; }
+  .hero__inner { gap: 1rem; }
+  .hero__stats { gap: 1.25rem; }
+}
+
+/* ===== Phones: a different composition, not a shrunken desktop ===== */
+@media (max-width: 767px) {
+  .hero { display: block; min-height: 0; padding: 64px 1.25rem 3rem; }
+  .hero__inner { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  /* 1) the head first, centred and prominent */
+  .hero__stage { order: -1; width: auto; align-self: stretch; height: clamp(270px, 46svh, 420px); min-height: 0; margin: 0 -1.25rem; }
+  .hero__hint { display: none; }
+  /* 2) name + title + calls to action right under it */
+  .hero__copy { align-items: center; text-align: center; }
+  .hero__badge { margin-bottom: 0.9rem; font-size: 11.5px; }
+  .hero__hi { margin-bottom: 0.1rem; }
+  .hero__name { font-size: clamp(2.05rem, 10.5vw, 2.8rem); margin-bottom: 0.6rem; }
+  .hero__name-grad { display: block; }
+  .hero__role { margin-bottom: 1.2rem; }
+  .hero__cta { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1.1rem; }
+  .hero__cta .btn { padding: 12px 10px; font-size: 13.5px; }
+  .hero__cta .btn--primary { grid-column: 1 / -1; }
+  .hero__social { justify-content: center; margin-bottom: 2.2rem; }
+  /* 3) the rest of the introduction sits below the fold */
+  .hero__intro { margin-inline: auto; font-size: 14.5px; }
+  .hero__stats { width: 100%; justify-content: space-between; gap: 0.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.07); }
+  .hero__stats > div { flex: 1; text-align: center; }
+  .hero__stats dt { font-size: 22px; }
+}

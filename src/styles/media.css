@@ -1,0 +1,26 @@
+/* Images used instead of generic icons: brand logos, project banners, round social buttons. */
+
+/* ---- brand logos ---- */
+.tech-logo { object-fit: contain; flex-shrink: 0; display: block; transition: transform 0.25s ease, filter 0.25s ease; -webkit-user-drag: none; }
+.tech-logo:hover { transform: scale(1.12); }
+.glass-card:hover .tech-logo, .skill-chip:hover .tech-logo, .social-stack:hover .tech-logo, .social-round:hover .tech-logo { transform: scale(1.12); filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.25)); }
+.visual-logos { display: inline-flex; align-items: center; gap: 10px; }
+.visual-icon svg { display: block; }
+
+/* ---- skill chips ---- */
+.skill-chip { display: inline-flex; align-items: center; gap: 7px; }
+
+/* ---- project banner ---- */
+.image-card { position: relative; overflow: hidden; }
+.image-card__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; opacity: 0.95; transition: transform 0.5s ease, opacity 0.3s ease; }
+.image-card__shade { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.12); transition: background 0.3s ease; }
+.image-card[data-hovered="true"] .image-card__img { transform: scale(1.06); opacity: 1; }
+.image-card[data-hovered="true"] .image-card__shade { background: rgba(0, 0, 0, 0.04); }
+
+/* ---- footer round buttons ---- */
+.social-round { width: 38px; height: 38px; border-radius: 50%; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
+.social-round:hover { background: rgba(0, 245, 255, 0.15); border-color: rgba(0, 245, 255, 0.4); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-logo, .image-card__img { transition: none; }
+}
